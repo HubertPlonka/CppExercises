@@ -12,6 +12,7 @@ Happy Coding!
 
 
 #include <string>
+#include <sstream>
 
 int square_digits(int num) {
   std::string temp;
@@ -19,11 +20,14 @@ int square_digits(int num) {
   int itemp;
   int iout;
   temp = std::to_string(num);
+  
   for(size_t i=0; i<temp.size(); i++){
-    itemp = (int)i - '0';
+    itemp = (int)temp[i]-48;
     itemp *= itemp;
-    out.push_back((char)itemp);
+    out += std::to_string(itemp);
   };
-  iout = (int)out;
+  
+  std::stringstream ss(out);
+  ss >> iout;
  return iout;
 }
